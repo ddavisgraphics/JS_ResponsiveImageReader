@@ -1,0 +1,20 @@
+<section class="formBuilder insertUpdateForm">
+	<header>
+		<h1>{formTitle}</h1>
+	</header>
+
+	{ifFormErrors}
+	<section class="formErrors">
+		{formErrors}
+	</section>
+	{/ifFormErrors}
+
+	{form}
+	{fields display="hidden"}
+	<ul class="formFields">
+		{fieldsLoop}
+		<li>{field}</li>
+		{/fieldsLoop}
+	</ul>
+	{/form}
+</section>
