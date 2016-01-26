@@ -1,9 +1,3 @@
-<?php
-    require_once "includes/engine.php";
-
-    templates::display('header');
-?>
-
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -13,8 +7,14 @@
     </head>
 
     <body>
+        <select class="imageType" id="imageType">
+            <option value=""> Select an Image Type </option>
+            <option value="pic"> Picture </option>
+            <option value="qr"> QR Code </option>
+        </select>
+
         <!-- Inputs -->
-        <input type="file" accept="image/*" id="pictureField">
+        <input type="file" accept="image/*" id="pictureField" src="">
 
         <div style="width:300px;">
             <img id="insertedImage" style="width:100%; height:auto;" />
@@ -24,29 +24,7 @@
     <!-- JS Dependencies -->
     <script src="/includes/templateIncludes/js/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/includes/templateIncludes/js/bower_components/qcode-decoder/build/qcode-decoder.min.js"></script>
-    <script>
+    <script src="/includes/templateIncludes/js/main.js"></script>
 
-    $(document).ready(function() {
-        console.log('onReady');
-
-        // fixe grabbing the image in webkit
-        if(!("url" in window) && ("webkitURL" in window)) {
-            window.URL = window.webkitURL;
-        }
-
-        // grab the image and place it in the inserted image source
-        $("#pictureField").on("change", function(){
-            if(event.target.files.length == 1 && event.target.files[0].type.indexOf("image/") == 0) {
-                $("#insertedImage").attr("src",URL.createObjectURL(event.target.files[0]));
-            }
-        });
-    });
-
-    </script>
     </body>
-
 </html>
-
-<?php
-    templates::display('footer');
-?>
